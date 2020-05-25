@@ -1,0 +1,72 @@
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+Example 1:
+
+Input: 121
+Output: true
+Example 2:
+
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+Example 3:
+
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+Follow up:
+
+Coud you solve it without converting the integer to a string?
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Pseudocode : 
+
+1] Get the input integer no
+2] Check if its a negative no, if so, its not a palindrome
+3] In a while loop, separate the last digit and multiply it with 10
+4] continue with the remaining otehr digits. The remaining other digits are quotient and can be got dividing the no with 10. 
+5] check if the no and the reversed no are equal, if so its a palindrome, otherwise its not a palindorme
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Solution : (Java)
+
+class Solution {
+    public boolean isPalindrome(int x) {
+        int val = x;
+        int rev = 0;
+        if (val < 0) return false;
+        while(val != 0){
+            rev = rev * 10 + (val % 10);
+            val = val / 10;
+        }
+        if (x != rev) return false;
+        else return true;
+    }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Solution : (Python)
+
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        pali = 0
+        res = x
+        if(x < 0):
+            return False
+        else:
+            while(x !=0 ):
+                pali = pali * 10 + (x % 10)
+                x = x // 10
+        if (res != pali):       
+            return False
+        else:
+            return True
