@@ -1,0 +1,67 @@
+Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word 
+(last word means the last appearing word if we loop from left to right) in the string.
+
+If the last word does not exist, return 0.
+
+Note: A word is defined as a maximal substring consisting of non-space characters only.
+
+Example:
+
+Input: "Hello World"
+Output: 5
+
+------------------------------------------------------------------------------------------------------------------------
+
+Pseudocode : 
+1] Get the length of the string.
+2] In a loop, trim the trailing spaces, if the char is space.
+3] In another loop count the length of the string, by looking through the char at each position. 
+4] return the length of the string.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Solution: (Java)
+
+class Solution {
+    public int lengthOfLastWord(String s) {
+        //trim the trailing spaces. 
+        int p = s.length() - 1;
+        while (p >=0 && s.charAt(p) == ' ') {
+            p--;
+        }
+        
+        //compute the length of the last word
+        int length = 0;
+        while (p >=0 && s.charAt(p) != ' ') {
+            p--;
+            length++;
+        }
+        return length;
+    }
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+Solution: (Python)
+
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        p = len(s) - 1
+        while (p >=0 and s[p] == ' '):
+            p -= 1
+            
+        length = 0    
+        while (p >=0 and s[p] != ' '):
+            p -= 1
+            length += 1
+        return length
+        
+
+
+------------------------------------------------------------------------------------------------------------------------
